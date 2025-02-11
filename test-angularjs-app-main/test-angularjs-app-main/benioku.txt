@@ -1,0 +1,2 @@
+projeyi çalıştırmak için
+http-server .

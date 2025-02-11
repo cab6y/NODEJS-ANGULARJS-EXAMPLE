@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "ngstorage": "^0.3.11"
+  },
+  "devDependencies": {
+    "angular-swx-session-storage": "^1.0.0"
+  }
+}

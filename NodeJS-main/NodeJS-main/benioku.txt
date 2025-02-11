@@ -1,0 +1,7 @@
+yeni controller yada fonksiyon eklendiği zaman:
+node swagger.js
+komutu çalıştılır ki swagger'a gelsin
+
+
+projeyi çalıştırmak için
+node test/index.js
