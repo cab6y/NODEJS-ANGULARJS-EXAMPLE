@@ -1,15 +1,24 @@
-angular.module('myApp').controller('EditProductController', function($scope, $routeParams, ProductService) {
+angular.module('myApp').controller('EditProductController', function($scope, $routeParams, ProductService,$timeout) {
     var productId = $routeParams.id; 
     $scope.product = {
         id: "",
         ProductName: "",
         StockQuantity: "",
-        Price: ""
+        Price: "",
+        Image: null
     };
-
+// Dosya yüklendiğinde çağrılacak fonksiyon
+$scope.onFileDropped = function(base64Data) {
+    // Use $timeout to delay the $apply and avoid conflict with ongoing digest cycles
+    $timeout(function() {
+        $scope.product.Image = base64Data;
+        console.log("Yüklenen Resim (Base64):", $scope.product.Image);
+    });
+};
     ProductService.getProduct(productId).then(function(response) {
+        console.log("**********"+response.data.Image.replace('"',''))
         $scope.product = response.data;
-        console.log("Ürün verisi başarıyla alındı:", $scope.product);
+        $scope.product.Image = response.data.Image;
     }).catch(function(error) {
         console.error('Ürün yüklenirken hata oluştu:', error);
         $scope.product = null;
@@ -32,3 +41,4 @@ angular.module('myApp').controller('EditProductController', function($scope, $ro
         }
     };
 });
+

@@ -1,3 +1,18 @@
+<style>
+    .dropzone {
+    border: 2px dashed #007bff;
+    padding: 20px;
+    text-align: center;
+    margin: 10px 0;
+    cursor: pointer;
+    width: 25%;
+}
+
+.dropzone.dragging {
+    background-color: #f0f8ff;
+}
+
+</style>
 <div ng-controller="EditProductController">
     <h3>Ürün Düzenle</h3>
     <div ng-if="product">
@@ -10,7 +25,15 @@
             
             <label for="Price">Fiyat</label>
             <input type="text" id="Price" ng-model="product.Price" />
+            <br>
+            <img ng-if="product.Image" ng-src="{{product.Image}}" width="200px" />
+        
+            <div class="dropzone" file-dropzone file="filebase64" on-file-dropped="onFileDropped(base64Data)">
+                <p>Resminizi buraya sürükleyin</p>
+            </div>
             
+            
+
             <button type="submit">Düzenle</button>
         </form>
     </div>
