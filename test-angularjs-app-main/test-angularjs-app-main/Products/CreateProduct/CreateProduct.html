@@ -1,16 +1,37 @@
-<div ng-controller="CreateProductController">
-    <h3>Yeni Ürün Ekle</h3>
+<style>
+    .dropzone {
+    border: 2px dashed #007bff;
+    padding: 20px;
+    text-align: center;
+    margin: 10px 0;
+    cursor: pointer;
+    width: 25%;
+}
+
+.dropzone.dragging {
+    background-color: #f0f8ff;
+}
+
+</style>
+
+<div ng-app="myApp" ng-controller="CreateProductController">
+    <h2>Yeni Ürün Ekle</h2>
 
     <form ng-submit="createProduct()">
-        <label>Ürün Adı:</label>
-        <input type="text" ng-model="newProduct.ProductName" required>
+        <input type="text" ng-model="newProduct.ProductName" placeholder="Ürün Adı" required><br>
+        <input type="number" ng-model="newProduct.StockQuantity" placeholder="Stok Miktarı" required><br>
+        <input type="number" ng-model="newProduct.Price" placeholder="Fiyat" required><br>
+        <image ng-src="newProduct.Image" ng-model="newProduct.Image"></image>
+        
+        <div class="dropzone" file-dropzone file="filebase64" on-file-dropped="onFileDropped(base64Data)">
+            <p>Dosyanızı buraya sürükleyin</p>
+        </div>
+        
+        <img ng-if="newProduct.Image" ng-src="{{newProduct.Image}}" width="200px" />
+        
 
-        <label>Stok Miktarı:</label>
-        <input type="number" ng-model="newProduct.StockQuantity" required>
-
-        <label>Fiyat:</label>
-        <input type="number" ng-model="newProduct.Price" required>
-
-        <button type="submit">Ürün Ekle</button>
+        
+        <p id ="base64file">{{base64}}</p>
+        <button type="submit">Ürünü Kaydet</button>
     </form>
 </div>

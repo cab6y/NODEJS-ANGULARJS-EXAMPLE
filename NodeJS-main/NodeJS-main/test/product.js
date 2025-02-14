@@ -8,13 +8,13 @@ function ProductController(app) {
  */
   app.post('/add-product', async (req, res) => {
     try {
-      const { ProductName, StockQuantity, Price } = req.body;
+      const { ProductName, StockQuantity, Price , Image } = req.body;
 
       if (!ProductName || !StockQuantity || !Price) {
         return res.status(400).json({ error: "Eksik parametre!" });
       }
 
-      const newproduct = await Product.create({ ProductName, StockQuantity, Price  ,request : JSON.stringify(req.body)});
+      const newproduct = await Product.create({ ProductName, StockQuantity, Price  ,request : JSON.stringify(req.body) , Image : JSON.stringify(Image)});
       res.status(201).json(newproduct);
     } catch (error) {
       res.status(500).json({ error: "Bir hata oluştu!", details: error.message });
@@ -50,12 +50,13 @@ function ProductController(app) {
 
   app.put('/update-product', async (req, res) => {
     try {
-      const { id, ProductName, StockQuantity, Price } = req.body;
+      const { id, ProductName, StockQuantity, Price , Image } = req.body;
 
       const getproduct = await Product.findOne({ where: { id:id } })
       getproduct.ProductName = ProductName;
       getproduct.StockQuantity = StockQuantity;
       getproduct.Price = Price;
+      getproduct.Image = Image;
       getproduct.save();
       res.status(200).json(getproduct);
     } catch (error) {

@@ -17,8 +17,10 @@ const Product = sequelize.define('Product', {
   ProductName: { type: DataTypes.STRING, allowNull: false },
   StockQuantity:{ type: DataTypes.INTEGER, allowNull: false },
   Price:{ type: DataTypes.DECIMAL, allowNull: false },
-  request: { type: DataTypes.JSONB, allowNull: true }
+  request: { type: DataTypes.JSONB, allowNull: true },
+  Image: { type: DataTypes.JSONB, allowNull: true },
 });
+
 
 sequelize.sync()
   .then(() => console.log("Tablolar senkronize edildi!"))
