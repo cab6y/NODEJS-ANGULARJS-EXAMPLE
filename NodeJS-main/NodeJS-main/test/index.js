@@ -15,7 +15,7 @@ app.use(cors({
     methods: ['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'],  
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,  // Allow cookies if necessary
-    origin: 'http://192.168.56.1:8081',  // Allow only this origin
+    origin: 'http://192.168.56.1:8080',  // Allow only this origin
 }));
 
 app.use(express.json()); 
