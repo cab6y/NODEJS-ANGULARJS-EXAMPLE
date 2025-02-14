@@ -37,6 +37,14 @@ $('#search-results tbody').on('click', '.edit-btn', function() {
                         { title: "Ürün Adı", data: "ProductName" },
                         { title: "Fiyat", data: "Price" },
                         { title: "Adet", data: "StockQuantity" },
+                        { title: "Resim", data: "Image",
+                            render: function(data, type, row) {
+                                console.log(data);
+                                return `<Image src="${data.replace('"','')}" style="
+    width: 70px;
+"></Image>`;
+                            }
+                        },
                         {
                             title: "Düzenle",
                             data: null,
