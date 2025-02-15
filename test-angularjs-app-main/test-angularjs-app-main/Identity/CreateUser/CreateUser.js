@@ -15,14 +15,20 @@ angular.module('myApp')
 
         IdentityService.addUser(userData)
         .then(function(response) {
-            alert("************Ürün başarıyla eklendi***********!");
-            console.log(response);
-            window.location.href = "/#!/Login";
+            Swal.fire({
+                icon: 'success',
+                title: 'Kayıt Başarılı!',
+                text: 'Giriş Sayfasın Yönlendiriliyorsunuz.',
+                confirmButtonText: 'Tamam'
+            }).then(function() {
+                window.location.href = "/#!/Login";
             $scope.user = {
                 username: '',
                 email: '',
                 password: ''
             };
+            });;
+            
         })
         .catch(function(error) {
             alert("Ürün eklenirken bir hata oluştu.");
