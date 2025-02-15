@@ -1,6 +1,9 @@
 {
   "dependencies": {
-    "ngstorage": "^0.3.11"
+    "@angular/animations": "^19.1.6",
+    "ngstorage": "^0.3.11",
+    "ngx-toastr": "^19.0.0",
+    "sweetalert2": "^11.16.1"
   },
   "devDependencies": {
     "angular-swx-session-storage": "^1.0.0"

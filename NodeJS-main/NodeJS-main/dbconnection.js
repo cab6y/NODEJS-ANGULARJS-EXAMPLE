@@ -6,6 +6,11 @@ const sequelize = new Sequelize('testnodejs', 'postgres', 'Xap1203*', {
   logging: false,
 });
 
+const Tenants = sequelize.define('Tenants', {
+  username: { type: DataTypes.STRING, allowNull: false },
+});
+
+
 const User = sequelize.define('User', {
   username: { type: DataTypes.STRING, allowNull: false },
   email:{ type: DataTypes.STRING, allowNull: false },
