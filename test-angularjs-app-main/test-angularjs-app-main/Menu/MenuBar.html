@@ -1,10 +1,17 @@
 <div ng-controller="MenuBarController">
+  
   <nav class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand" href="/">Home</a>
+    <a data-mdb-ripple-init type="button" class="btn btn-link px-3 me-2" href="/#!" ng-if="!isLoggedIn">
+      <h4>Home</h4>
+    </a>
     <a class="navbar-brand" href="/#!/products" ng-if="isLoggedIn">Products</a>
     <form class="form-inline">
-      <a class="navbar-brand" href="/#!/login" ng-if="!isLoggedIn">Sign in</a>
-      <a class="navbar-brand" href="/#!/create-user" ng-if="!isLoggedIn">Sign up</a>
+      <a data-mdb-ripple-init type="button" class="btn btn-link px-3 me-2" href="/#!/login" ng-if="!isLoggedIn">
+        Login
+      </a>
+      <a data-mdb-ripple-init type="button" class="btn btn-primary me-3" href="/#!/create-user" ng-if="!isLoggedIn">
+        Sign up for free
+      </a> 
       
       <span class="navbar-text" ng-if="isLoggedIn">Welcome, {{ username }}</span>
       <a href="#" ng-click="logout()" style="margin-left:10px" ng-if="isLoggedIn">Çıkış Yap</a>
