@@ -1,4 +1,4 @@
-const { User } = require('./dbconnection'); 
+const { User } = require('../dbconnection'); 
 
 function UserController(app) {
   app.post('/add-user', async (req, res) => {

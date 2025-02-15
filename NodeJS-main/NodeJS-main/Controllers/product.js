@@ -1,4 +1,4 @@
-const { Product } = require('./dbconnection');
+const { Product } = require('../dbconnection');
 
 function ProductController(app) {
     /**
