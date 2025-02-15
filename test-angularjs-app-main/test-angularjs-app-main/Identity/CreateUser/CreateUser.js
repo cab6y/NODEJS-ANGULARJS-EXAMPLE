@@ -1,5 +1,5 @@
 angular.module('myApp')
-.controller('CreateUserController', function($scope, $http,API_BASE_URL) {
+.controller('CreateUserController', function($scope,IdentityService) {
     $scope.user = {
         username: '',
         email: '',
@@ -13,13 +13,19 @@ angular.module('myApp')
             password: $scope.user.password
         };
 
-        $http.post(API_BASE_URL+'/add-user', userData)
+        IdentityService.addUser(userData)
         .then(function(response) {
-            console.log('Başarıyla eklendi:', response.data);
-            window.location.href = "/#!/login"
+            alert("************Ürün başarıyla eklendi***********!");
+            console.log(response);
+            window.location.href = "/#!/Login";
+            $scope.user = {
+                username: '',
+                email: '',
+                password: ''
+            };
         })
         .catch(function(error) {
-            console.error('Hata:', error);
+            alert("Ürün eklenirken bir hata oluştu.");
         });
     };
 });
